@@ -6,6 +6,8 @@ dotenv.config(); // for using the environment variables
 
 const app = express();
 const port = process.env.PORT || 3000;
+// all middlewares
+app.use(express.json()); // this is for getting data from the req.body parse payload
 
 app.use("/api/auth", authRoutes);
 
