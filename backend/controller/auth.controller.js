@@ -1,5 +1,6 @@
 import { User } from "../model/user.model.js";
 import { generateJwtTokenAndSetCookies } from "../utils/generateTokenAndSetCookie.js";
+import bcrypt from "bcryptjs";
 
 const userSignUp = async (req, res) => {
   const { email, password, name } = req.body;
@@ -13,8 +14,8 @@ const userSignUp = async (req, res) => {
         .status(400)
         .json({ success: false, message: "User already exists" });
     }
-    // hash the password
-    const hashedPassword = await bcrypt.has(password, 10); // here this number is salt
+    // hash the password 
+    const hashedPassword = await bcrypt.hash(password, 10); // here this number is salt
     const verificationToken = Math.floor(
       10000 + Math.random() * 90000
     ).toString();

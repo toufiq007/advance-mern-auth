@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
   try {
-    const dbResponse = await mongoose.connect(process.env.MONGO_URI);
+    const dbResponse = await mongoose.connect(process.env.MONGO_URI, {
+      dbName: "auth_db",
+    });
     console.log(`database connected`, dbResponse.connection.host);
   } catch (err) {
     console.log(err);
