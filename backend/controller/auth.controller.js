@@ -1,4 +1,5 @@
 import { User } from "../model/user.model.js";
+import { generateJwtTokenAndSetCookies } from "../utils/generateTokenAndSetCookie.js";
 
 const userSignUp = async (req, res) => {
   const { email, password, name } = req.body;
